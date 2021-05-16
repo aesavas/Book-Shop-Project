@@ -1,0 +1,95 @@
+Home
+Blog
+Travel
+Search
+.gitignore file for Java
+I am working with Java projects and Git both. But sometimes opening a project from different IDE will create extra files which we really don’t want. So using the .gitignore file in the root folder of your Git repository will ignore files and patterns you have mentioned. Finally, I found there are three main Java IDEs currently.
+
+I am very sorry if your favourite IDE is not listed here. Please do not start IDE wars. So I just went through the Bitbucket and GitHub (link to gitignore templates). Then I created my own .gitignore file. I wish this would help you.
+
+##############################
+## Java
+##############################
+.mtj.tmp/
+*.class
+*.jar
+*.war
+*.ear
+*.nar
+hs_err_pid*
+
+##############################
+## Maven
+##############################
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+pom.xml.bak
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+##############################
+## Gradle
+##############################
+bin/
+build/
+.gradle
+.gradletasknamecache
+gradle-app.setting
+!gradle-wrapper.jar
+
+##############################
+## IntelliJ
+##############################
+out/
+.idea/
+.idea_modules/
+*.iml
+*.ipr
+*.iws
+
+##############################
+## Eclipse
+##############################
+.settings/
+bin/
+tmp/
+.metadata
+.classpath
+.project
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.loadpath
+.factorypath
+
+##############################
+## NetBeans
+##############################
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+nbactions.xml
+nb-configuration.xml
+
+##############################
+## Visual Studio Code
+##############################
+.vscode/
+.code-workspace
+
+##############################
+## OS X
+##############################
+.DS_Store
+view raw.gitignore Java hosted with ❤ by GitHub
+November 15, 2014 · bitbucket, .gitignore, java. eclipse, git, intellij idea, netbeans, github
