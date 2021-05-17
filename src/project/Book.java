@@ -1,6 +1,6 @@
-//Ali Emre SAVAŞ
-//13070001034
-//Computer Engineering
+/*
+   Author : aesavas
+*/
 
 package project;
 
@@ -11,8 +11,11 @@ public class Book extends Item {
     private String author;
 
 
-    public Book(int iD){
-        this.setiD(iD);
+    public Book(int id, String name, String publishDate, int quantity, int iSBN, String publisher, String author){
+        super(id, name, "Book", publishDate, quantity);
+        this.setiSBN(iSBN);
+        this.setAuthor(author);
+        this.setPublisher(publisher);
     }
 
 

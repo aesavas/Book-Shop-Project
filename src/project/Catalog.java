@@ -1,6 +1,6 @@
-//Ali Emre SAVAŞ
-//13070001034
-//Computer Engineering
+/*
+   Author : aesavas
+*/
 
 package project;
 
@@ -11,82 +11,38 @@ import java.util.Scanner;
 
 public class Catalog {
 
-
-    static int iD = 0;
+    static int id = 0;
     ArrayList<Item> items = new ArrayList<Item>();
     Scanner scan = new Scanner(System.in);
     Random random = new Random();
-    //ArrayList<Book> books = new ArrayList<Book>();
-    //ArrayList<Magazine> magazines = new ArrayList<Magazine>();
-    //ArrayList<DVD> dvds = new ArrayList<DVD>();
 
-
-    public boolean idCheck(int iD){
-        if(iD <=99999){
-
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
-
-
-
-    public int addItem(){
-        if (idCheck(iD)) {
-            iD++;
-        }
-        else{
+    public void createId(){
+        if ((id <= 99999)) {
+            id++;
+        } else {
             System.out.println("You have maximum item.");
         }
-        return iD;
     }
 
-    public void addBook(String name,String date,String type,String itemDetail,String status,int iSBN,
-                        String publisher,String author){
-        addItem();
-        Book b = new Book(iD);
-        b.setName(name);
-        b.setDate(date);
-        b.setType(type);
-        b.setItemDetail(itemDetail);
-        b.setStatus(status);
-        b.setiSBN(iSBN);
-        b.setPublisher(publisher);
-        b.setAuthor(author);
+    // Add Item Methods
+    public void addBook(String name, String publishDate, int quantity, int iSBN, String author, String publisher){
+        createId();
+        Book b = new Book(id, name, publishDate, quantity, iSBN, author, publisher);
         items.add(b);
-
     }
-    public void addMagazine(String name,String date,String type,String itemDetail,
-                            String status, String issue,String publisher){
-        addItem();
-        Magazine m = new Magazine(iD);
-        m.setName(name);
-        m.setDate(date);
-        m.setType(type);
-        m.setItemDetail(itemDetail);
-        m.setStatus(status);
-        m.setIssue(issue);
-        m.setPublisher(publisher);
+
+    public void addMagazine(String name, String publishDate, int quantity, String content,String publisher){
+        createId();
+        Magazine m = new Magazine(id, name, publishDate, quantity, content, publisher);
         items.add(m);
     }
 
-    public void addDVD(String name, String date, String type,String itemDetail,
-                       String status,String producer,String duration){
-
-        addItem();
-        Dvd d = new Dvd(iD);
-        d.setName(name);
-        d.setDate(date);
-        d.setType(type);
-        d.setItemDetail(itemDetail);
-        d.setStatus(status);
-        d.setProducer(producer);
-        d.setDuration(duration);
-
+    public void addDVD(String name, String publishDate, int quantity, String producer,String duration){
+        createId();
+        Dvd d = new Dvd(id, name, publishDate, quantity, producer, duration);
         items.add(d);
     }
+
 
     public boolean deleteOneItem(String name){
         boolean a=false;

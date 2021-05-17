@@ -1,25 +1,35 @@
+/*
+   Author : aesavas
+*/
 package project;
 
 public abstract class Item implements Comparable<Item> {
-
     private String name;
-    private String date;
-    private int iD;
+    private String publishDate;
+    private int id;
     private String type;
-    private String itemDetail;
-    private String status;
+    private int quantity;
+
+    public Item(int id, String name, String type, String publishDate, int quantity){
+        this.id = id;
+        this.name = name;
+        this.type = type;
+        this.publishDate = publishDate;
+        this.quantity = quantity;
+    }
+
 
     @Override
-    public int compareTo(Item other){
-
-        return this.name.compareTo(other.name);
+    public int compareTo(Item otherItem){
+        return this.name.compareTo(otherItem.name);
     }
 
-    public int getiD() {
-        return iD;
+    // Getter - Setter Section
+    public int getId() {
+        return id;
     }
-    public void setiD(int iD) {
-        this.iD = iD;
+    public void setId(int id) {
+        this.id = id;
     }
     public String getType() {
         return type;
@@ -27,35 +37,36 @@ public abstract class Item implements Comparable<Item> {
     public void setType(String type) {
         this.type = type;
     }
-    public String getItemDetail() {
-        return itemDetail;
+
+    public String getPublishDate() {
+        return publishDate;
     }
-    public void setItemDetail(String itemDetail) {
-        this.itemDetail = itemDetail;
+
+    public void setPublishDate(String publishDate) {
+        this.publishDate = publishDate;
     }
-    public String getStatus() {
-        return status;
+
+    public int getQuantity() {
+        return quantity;
     }
-    public void setStatus(String status) {
-        this.status = status;
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
+
     public String getName() {
         return name;
     }
     public void setName(String name) {
         this.name = name;
     }
-    public String getDate() {
-        return date;
-    }
-    public void setDate(String date) {
-        this.date = date;
-    }
 
+
+    // Method Section
     @Override
     public String toString(){
-        return "============"+"\n"+ "ID : "+this.iD+"\nName : "+this.name+"\nDate : "+this.date+
-                "\nType : "+this.type+"\nItem Detail : "+this.itemDetail+"\nStatus : "+this.status;
+        return "============"+"\n"+ "ID : "+this.id+"\nName : "+this.name+"\nDate : "+this.publishDate+
+                "\nType : "+this.type+"\n";
     }
 
 

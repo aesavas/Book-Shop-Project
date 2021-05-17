@@ -1,6 +1,6 @@
-//Ali Emre SAVAŞ
-//13070001034
-//Computer Engineering
+/*
+   Author : aesavas
+*/
 package project;
 
 public class Dvd extends Item{
@@ -9,10 +9,11 @@ public class Dvd extends Item{
     private String duration;
 
 
-    public Dvd(int iD){
-        this.setiD(iD);
+    public Dvd(int id, String name, String publishDate, int quantity, String producer, String duration){
+        super(id, name, "Dvd", publishDate, quantity);
+        this.setDuration(duration);
+        this.setProducer(producer);
     }
-
 
     @Override
     public int compareTo(Item other){

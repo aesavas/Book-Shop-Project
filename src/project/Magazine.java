@@ -1,26 +1,27 @@
-//Ali Emre SAVAŞ
-//13070001034
-//Computer Engineering
+/*
+   Author : aesavas
+*/
 package project;
 
 public class Magazine extends Item{
 
-    private String issue;
+    private String content;
     private String publisher;
 
-    public Magazine(int iD){
-        this.setiD(iD);
+    public Magazine(int id, String name, String publishDate, int quantity, String content, String publisher){
+        super(id, name, "Magazine", publishDate, quantity);
+        this.setContent(content);
+        this.setPublisher(publisher);
     }
     @Override
-    public int compareTo(Item other) {
-
-        return getName().compareTo(other.getName());
+    public int compareTo(Item otherItem) {
+        return getName().compareTo(otherItem.getName());
     }
-    public String getIssue() {
-        return issue;
+    public String getContent() {
+        return content;
     }
-    public void setIssue(String issue) {
-        this.issue = issue;
+    public void setContent(String content) {
+        this.content = content;
     }
     public String getPublisher() {
         return publisher;
@@ -31,7 +32,7 @@ public class Magazine extends Item{
 
     @Override
     public String toString(){
-        return super.toString() +"\nIssue : "+this.issue+"\nPublisher : "+this.publisher+"\n"+"=============";
+        return super.toString() +"\nContent : "+this.content+"\nPublisher : "+this.publisher+"\n"+"=============";
     }
 
 }

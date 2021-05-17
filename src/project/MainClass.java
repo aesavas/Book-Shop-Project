@@ -1,6 +1,6 @@
-//Ali Emre SAVAŞ
-//13070001034
-//Computer Engineering
+/*
+   Author : aesavas
+*/
 
 package project;
 
