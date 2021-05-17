@@ -31,24 +31,23 @@ public class MainClass {
                     System.out.println("3 - Add DVD");
                     System.out.print("Enter choice : ");
                     choice = scan.nextInt();
+                    String name, publishDate;
+                    int quantity;
                     switch (choice) {
                         case 1:
                             System.out.print("Enter Book Name : ");
-                            String name = scan.nextLine();
+                            name = scan.nextLine();
                             name = scan.nextLine();
                             System.out.print("Enter Date (like that 00.00.0000) : ");
-                            String date = scan.nextLine();
-                            String type = "Book";
-                            System.out.print("Enter Book's Detail : ");
-                            String itemDetail = scan.nextLine();
-                            System.out.print("Enter Item's Status : ");
-                            String status = scan.nextLine();
+                            publishDate = scan.nextLine();
+                            System.out.print("Enter Book's Stock Quantity : ");
+                            quantity = Integer.parseInt((scan.nextLine()));
                             int iSBN = random.nextInt(100000);
                             System.out.print("Enter Book's Publisher : ");
                             String publisher = scan.nextLine();
                             System.out.print("Enter Book's Author : ");
                             String author = scan.nextLine();
-                            catalog.addBook(name, date, type, itemDetail, status, iSBN, publisher, author);
+                            catalog.addBook(name, publishDate, quantity, iSBN, author, publisher);
                             break;
 
                         case 2:
@@ -56,17 +55,14 @@ public class MainClass {
                             name = scan.nextLine();
                             name = scan.nextLine();
                             System.out.print("Enter Date (like that 00.00.0000) : ");
-                            date = scan.nextLine();
-                            type = "Magazine";
-                            System.out.print("Enter Magazine's detail : ");
-                            itemDetail = scan.nextLine();
-                            System.out.print("Enter Item's Status : ");
-                            status = scan.nextLine();
+                            publishDate = scan.nextLine();
+                            System.out.print("Enter Magazine's Stock Quantity : ");
+                            quantity = Integer.parseInt((scan.nextLine()));
                             System.out.print("Enter Magazine's Issue : ");
-                            String issue = scan.nextLine();
+                            String content = scan.nextLine();
                             System.out.print("Enter Magazine's Publisher : ");
                             publisher = scan.nextLine();
-                            catalog.addMagazine(name, date, type, itemDetail, status, issue, publisher);
+                            catalog.addMagazine(name, publishDate, quantity, content, publisher);
                             break;
 
                         case 3:
@@ -74,17 +70,14 @@ public class MainClass {
                             name = scan.nextLine();
                             name = scan.nextLine();
                             System.out.print("Enter Date (like that 00.00.0000) : ");
-                            date = scan.nextLine();
-                            type = "DVD";
-                            System.out.print("Enter DVD's detail : ");
-                            itemDetail = scan.nextLine();
-                            System.out.print("Enter Item's Status : ");
-                            status = scan.nextLine();
+                            publishDate = scan.nextLine();
+                            System.out.print("Enter DVD's Stock Quantity : ");
+                            quantity = Integer.parseInt((scan.nextLine()));
                             System.out.print("Enter DVD's Producer : ");
                             String producer = scan.nextLine();
                             System.out.print("Enter DVD's Duration (as minute) : ");
                             String duration = scan.nextLine();
-                            catalog.addDVD(name, date, type, itemDetail, status, producer, duration);
+                            catalog.addDVD(name, publishDate, quantity, producer, duration);
                             break;
 
                         default:
@@ -99,11 +92,10 @@ public class MainClass {
                     switch (choice) {
                         case 1:
                             System.out.println("Enter Name to Remove Item : ");
-                            String name = scan.nextLine();
                             name = scan.nextLine();
-                            //boolean a=catalog.deleteOneItem(name);
+                            name = scan.nextLine();
                             if(catalog.deleteOneItem(name)){
-                                System.out.println("Your item is deleted succesfully!");
+                                System.out.println("Your item is deleted successfully!");
                             }
                             else{
                                 System.out.println("There is no item the name you looking for!");
@@ -119,7 +111,6 @@ public class MainClass {
                             else{
                                 System.out.println("You wrote wrong name of type!");
                             }
-
                             break;
 
                         default:
@@ -127,16 +118,16 @@ public class MainClass {
                     }
                     break;
                 case 3://Updating
-                    System.out.println("1 - Update With Uniqe ID");
-                    System.out.println("2 - Update All Items status to 'Avaliable'");
+                    System.out.println("1 - Update With Unique ID");
+                    //System.out.println("2 - Update All Items status to 'Available'");
                     System.out.print("Enter choice : ");
                     choice = scan.nextInt();
                     switch (choice) {
                         case 1:
-                            System.out.print("Enter uniqe ID to update the Item : ");
-                            int iD = scan.nextInt();
+                            System.out.print("Enter unique ID to update the Item : ");
+                            int id = scan.nextInt();
 
-                            if(catalog.updateItemWithID(iD)){
+                            if(catalog.updateItemWithID(id)){
                                 System.out.println("Item is updated successfully!");
                             }
                             else{
@@ -169,7 +160,7 @@ public class MainClass {
                     switch (choice) {
                         case 1:
                             System.out.println("Enter name for searching : ");
-                            String name = scan.nextLine();
+                            name = scan.nextLine();
                             catalog.searchWithName(name);
                             break;
                         case 2:

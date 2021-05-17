@@ -43,20 +43,18 @@ public class Catalog {
         items.add(d);
     }
 
-
+    // Delete Item Methods
     public boolean deleteOneItem(String name){
-        boolean a=false;
         for(int i=0;i<items.size();i++){
             if(items.get(i).getName().equalsIgnoreCase(name)){
                 items.remove(i);
-                a=true;
+                return true;
             }
         }
-        return a;
+        return false;
     }
 
     public boolean deletedAllItemInType(String type){
-        //int a=0;
         boolean a=false;
         for (int i = 0; i < items.size(); i++) {
             if(items.get(i).getType().equalsIgnoreCase(type)){
@@ -67,6 +65,8 @@ public class Catalog {
         return a;
     }
 
+    // Update Item Methods
+    /*
     public boolean updateBookFunc(int iD, String name, String date,String type,
                                   String itemDetail,String status, int iSBN,String publisher,String author){
         boolean a = false;
@@ -140,82 +140,104 @@ public class Catalog {
         return a;
     }
 
-    public boolean updateItemWithID(int iD){
+    */
+    public boolean updateItemWithID(int id){
         boolean a = false;
         for (int i = 0; i < items.size(); i++) {
-            if(items.get(i).getiD() == iD){
-                if(items.get(i).getType().equalsIgnoreCase("Book")){
-                    System.out.print("Enter Book Name : ");
-                    String name = scan.nextLine();
-                    //name = scan.nextLine();
-                    System.out.print("Enter Date (like that 00.00.0000) : ");
-                    String date = scan.nextLine();
-                    String type = "Book";
-                    System.out.print("Enter Book's Detail : ");
-                    String itemDetail = scan.nextLine();
-                    System.out.print("Enter Item's Status : ");
-                    String status = scan.nextLine();
-                    int iSBN = random.nextInt(100000);
-                    System.out.print("Enter Book's Publisher : ");
-                    String publisher = scan.nextLine();
-                    System.out.print("Enter Book's Author : ");
-                    String author = scan.nextLine();
-                    //Book b = (Book) items.get(i);
-                    a = updateBookFunc(iD,name,date,type,itemDetail,status,iSBN,publisher,author);
-                }
-                else if(items.get(i).getType().equalsIgnoreCase("Magazine")){
-                    System.out.print("Enter Magazine's Name : ");
-                    String name = scan.nextLine();
-                    //name = scan.nextLine();
-                    System.out.print("Enter Date (like that 00.00.0000) : ");
-                    String date = scan.nextLine();
-                    String type = "Magazine";
-                    System.out.print("Enter Magazine's detail : ");
-                    String itemDetail = scan.nextLine();
-                    System.out.print("Enter Item's Status : ");
-                    String status = scan.nextLine();
-                    System.out.print("Enter Magazine's Issue : ");
-                    String issue = scan.nextLine();
-                    System.out.print("Enter Magazine's Publisher : ");
-                    String publisher = scan.nextLine();
-                    //Magazine m = (Magazine) items.get(i);
-                    a = updateMagazineFunc(iD,name,date,type,itemDetail,status,issue,publisher);
-                }
-                else if(items.get(i).getType().equalsIgnoreCase("DVD")){
-                    System.out.print("Enter DVD's Name : ");
-                    String name = scan.nextLine();
-                    //name = scan.nextLine();
-                    System.out.print("Enter Date (like that 00.00.0000) : ");
-                    String date = scan.nextLine();
-                    String type = "DVD";
-                    System.out.print("Enter DVD's detail : ");
-                    String itemDetail = scan.nextLine();
-                    System.out.print("Enter Item's Status : ");
-                    String status = scan.nextLine();
-                    System.out.print("Enter DVD's Producer : ");
-                    String producer = scan.nextLine();
-                    System.out.print("Enter DVD's Duration (as minute) : ");
-                    String duration = scan.nextLine();
-                    //DVD d = (DVD) items.get(i);
-                    a = updateDVDFunc(iD,name,date,type,itemDetail,status,producer,duration);
-                }
-            }
-        }
-        return a;
-    }
-    public boolean updatetoAvailable(){
-        boolean a = false;
-        for(int i=0; i < items.size();i++){
-            if(items.get(i).getStatus().equalsIgnoreCase("Available")){
+            if(items.get(i).getId() == id){
+                //int id, String name, String type, String publishDate, int quantity
+                boolean done = false;
+                do {
+                    System.out.println("Your item is "+items.get(i).getType()+". Please, choose which information to change.");
+                    System.out.println("1 - Name : ");
+                    System.out.println("2 - Publish Date :");
+                    System.out.println("3 - Stock Quantity :");
+                    if(items.get(i).getType().equalsIgnoreCase("Book")){
+                        System.out.println("4 - iSBN :");
+                        System.out.println("5 - Publisher :");
+                        System.out.println("6 - Author :");
+                    }
+                    else if(items.get(i).getType().equalsIgnoreCase("Magazine")){
+                        System.out.println("4 - Content :");
+                        System.out.println("5 - Publisher :");
+                    }
+                    else{ //Dvd
+                        System.out.println("4 - Producer :");
+                        System.out.println("5 - Duration :");
+                    }
+                    System.out.println("If you are done please enter '0'.");
+                    System.out.print("Enter choice : ");
+                    int choice = scan.nextInt();
+                    switch (choice){
+                        case 0:
+                            System.out.println("Updating information completed... ");
+                            done = true;
+                            a = true; // TODO: buradaki mekanizma degistirilebilir, belki fonksiyon boolean dondurmeye gerek kalmaz.
+                            break;
+                        case 1:
+                            // TODO : Burada input isleminde problem yasanabilir. Iki defa scan islemi gerekebilir. Notu dikkate al.
+                            System.out.print("Please enter new name :");
+                            items.get(i).setName(scan.nextLine());
+                            break;
+                        case 2:
+                            System.out.print("Please enter new publish date (like that 00.00.0000) : ");
+                            items.get(i).setPublishDate(scan.nextLine());
+                            break;
+                        case 3:
+                            System.out.print("Please enter new stock quantity : ");
+                            items.get(i).setQuantity(Integer.parseInt(scan.nextLine()));
+                            break;
+                        case 4:
+                            if(items.get(i).getType().equalsIgnoreCase("Book")){
+                                Book b = (Book) items.get(i);
+                                b.setiSBN(random.nextInt(100000));
+                            }
+                            else if(items.get(i).getType().equalsIgnoreCase("Magazine")){
+                                Magazine m = (Magazine) items.get(i);
+                                System.out.print("Please enter new content for magazine : ");
+                                m.setContent(scan.nextLine());
+                            }
+                            else{
+                                Dvd d = (Dvd) items.get(i);
+                                System.out.print("Please enter new producer for DVD : ");
+                                d.setProducer(scan.nextLine());
+                            }
+                            break;
+                        case 5:
+                            if(items.get(i).getType().equalsIgnoreCase("Book")){
+                                Book b = (Book) items.get(i);
+                                System.out.print("Please enter new publisher for book : ");
+                                b.setPublisher(scan.nextLine());
+                            }
+                            else if(items.get(i).getType().equalsIgnoreCase("Magazine")){
+                                Magazine m = (Magazine) items.get(i);
+                                System.out.print("Please enter new publisher for magazine : ");
+                                m.setPublisher(scan.nextLine());
+                            }
+                            else{
+                                Dvd d = (Dvd) items.get(i);
+                                System.out.print("Please enter new duration for DVD (minute) : ");
+                                d.setDuration(scan.nextLine());
+                            }
+                            break;
+                        case 6:
+                            Book b = (Book) items.get(i);
+                            System.out.print("Please enter new author for book : ");
+                            b.setAuthor(scan.nextLine());
+                            break;
+                        default:
+                            System.out.println("Wrong enter. Please try again... ");
+                            break;
+                    }
+                    System.out.println("Information updated.");
+                }while(!done);
+
 
             }
-            else{
-                items.get(i).setStatus("Available");
-                a=true;
-            }
         }
         return a;
     }
+
 
     public void searchWithName(String name){
         //boolean a = false;
@@ -271,6 +293,7 @@ public class Catalog {
             }
         }
     }
+
     public void printingAllItems(){
         Collections.sort(items);
         for (int i = 0; i < items.size(); i++) {
@@ -289,9 +312,6 @@ public class Catalog {
 
     public void printAscending(){
         Collections.sort(items);
-		/*for (int i = 0; i < items.size(); i++) {
-			System.out.println(items.get(i));
-		}*/
         for(Item i:items){
             System.out.println(i);
         }
