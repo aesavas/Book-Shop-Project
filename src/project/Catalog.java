@@ -65,82 +65,6 @@ public class Catalog {
         return a;
     }
 
-    // Update Item Methods
-    /*
-    public boolean updateBookFunc(int iD, String name, String date,String type,
-                                  String itemDetail,String status, int iSBN,String publisher,String author){
-        boolean a = false;
-        for (int i = 0; i < items.size(); i++) {
-            Item it = items.get(i);
-            if(it instanceof Book){
-                Book updateBook = (Book)it;
-
-                //Book updateBook = (Book) items.get(i);
-                if(updateBook.getiD() == iD){
-                    updateBook.setName(name);
-                    updateBook.setDate(date);
-                    updateBook.setType(type);
-                    updateBook.setItemDetail(itemDetail);
-                    updateBook.setStatus(status);
-                    updateBook.setiSBN(iSBN);
-                    updateBook.setPublisher(publisher);
-                    updateBook.setAuthor(author);
-                    a = true;
-                }
-            }
-        }
-        return a;
-    }
-
-
-    public boolean updateMagazineFunc(int iD, String name, String date,String type,
-                                      String itemDetail,String status,String issue,String publisher){
-        boolean a = false;
-
-        for (int i = 0; i < items.size(); i++) {
-            //Magazine updateMagazine = (Magazine) items.get(i);
-            Item it = items.get(i);
-            if(it instanceof Magazine){
-                Magazine updateMagazine = (Magazine)it;
-                if (updateMagazine.getiD() == iD) {
-                    updateMagazine.setName(name);
-                    updateMagazine.setDate(date);
-                    updateMagazine.setType(type);
-                    updateMagazine.setItemDetail(itemDetail);
-                    updateMagazine.setStatus(status);
-                    updateMagazine.setIssue(issue);
-                    updateMagazine.setPublisher(publisher);
-                    a = true;
-                }
-            }
-        }
-        return a;
-    }
-
-    public boolean updateDVDFunc(int iD, String name, String date,String type,
-                                 String itemDetail,String status,String producer,String duration){
-        boolean a = false;
-        for (int i = 0; i < items.size(); i++) {
-            //DVD updateDVD = (DVD) items.get(i);
-            Item it = items.get(i);
-            if(it instanceof Dvd){
-                Dvd updateDVD = (Dvd)it;
-                if (updateDVD.getiD() == iD) {
-                    updateDVD.setName(name);
-                    updateDVD.setDate(date);
-                    updateDVD.setType(type);
-                    updateDVD.setItemDetail(itemDetail);
-                    updateDVD.setStatus(status);
-                    updateDVD.setProducer(producer);
-                    updateDVD.setDuration(duration);
-                    a = true;
-                }
-            }
-        }
-        return a;
-    }
-
-    */
     public boolean updateItemWithID(int id){
         boolean a = false;
         for (int i = 0; i < items.size(); i++) {
@@ -175,17 +99,16 @@ public class Catalog {
                             a = true; // TODO: buradaki mekanizma degistirilebilir, belki fonksiyon boolean dondurmeye gerek kalmaz.
                             break;
                         case 1:
-                            // TODO : Burada input isleminde problem yasanabilir. Iki defa scan islemi gerekebilir. Notu dikkate al.
-                            System.out.print("Please enter new name :");
+                            System.out.print("Please enter new name :"); scan.nextLine();
                             items.get(i).setName(scan.nextLine());
                             break;
                         case 2:
-                            System.out.print("Please enter new publish date (like that 00.00.0000) : ");
+                            System.out.print("Please enter new publish date (like that 00.00.0000) : "); scan.nextLine(); // Dummy read
                             items.get(i).setPublishDate(scan.nextLine());
                             break;
                         case 3:
                             System.out.print("Please enter new stock quantity : ");
-                            items.get(i).setQuantity(Integer.parseInt(scan.nextLine()));
+                            items.get(i).setQuantity(scan.nextInt());
                             break;
                         case 4:
                             if(items.get(i).getType().equalsIgnoreCase("Book")){
@@ -194,91 +117,73 @@ public class Catalog {
                             }
                             else if(items.get(i).getType().equalsIgnoreCase("Magazine")){
                                 Magazine m = (Magazine) items.get(i);
-                                System.out.print("Please enter new content for magazine : ");
+                                System.out.print("Please enter new content for magazine : "); scan.nextLine(); // Dummy read
                                 m.setContent(scan.nextLine());
                             }
                             else{
                                 Dvd d = (Dvd) items.get(i);
-                                System.out.print("Please enter new producer for DVD : ");
+                                System.out.print("Please enter new producer for DVD : "); scan.nextLine(); // Dummy read
                                 d.setProducer(scan.nextLine());
                             }
                             break;
                         case 5:
                             if(items.get(i).getType().equalsIgnoreCase("Book")){
                                 Book b = (Book) items.get(i);
-                                System.out.print("Please enter new publisher for book : ");
+                                System.out.print("Please enter new publisher for book : "); scan.nextLine(); // Dummy read
                                 b.setPublisher(scan.nextLine());
                             }
                             else if(items.get(i).getType().equalsIgnoreCase("Magazine")){
                                 Magazine m = (Magazine) items.get(i);
-                                System.out.print("Please enter new publisher for magazine : ");
+                                System.out.print("Please enter new publisher for magazine : "); scan.nextLine(); // Dummy read
                                 m.setPublisher(scan.nextLine());
                             }
                             else{
                                 Dvd d = (Dvd) items.get(i);
-                                System.out.print("Please enter new duration for DVD (minute) : ");
+                                System.out.print("Please enter new duration for DVD (minute) : "); scan.nextLine(); // Dummy read
                                 d.setDuration(scan.nextLine());
                             }
                             break;
                         case 6:
                             Book b = (Book) items.get(i);
-                            System.out.print("Please enter new author for book : ");
+                            System.out.print("Please enter new author for book : "); scan.nextLine(); // Dummy read
                             b.setAuthor(scan.nextLine());
                             break;
                         default:
                             System.out.println("Wrong enter. Please try again... ");
                             break;
                     }
-                    System.out.println("Information updated.");
                 }while(!done);
-
-
             }
         }
         return a;
     }
 
-
     public void searchWithName(String name){
-        //boolean a = false;
         for(int i=0;i<items.size();i++){
             if(items.get(i).getName().equalsIgnoreCase(name)){
                 System.out.println(items.get(i));
-
             }
             else{
                 System.out.println("There is no item with that name");
             }
         }
-
     }
 
-    public void searchWithTypeandName(String type,String name){
+    public void searchWithTypeAndName(String type,String name){
         Collections.sort(items);
+        boolean done = false;
         for (int i = 0; i < items.size(); i++) {
-            if(items.get(i).getType().equalsIgnoreCase(type)){
-                if(items.get(i).getName().equalsIgnoreCase(name)){
-                    System.out.println(items.get(i));
-                }
-                else{
-                    System.out.println("There is no item with that name");
-                }
-            }
-        }
-    }
-
-    public void searchWithThreeFeatures(String name,String date,String status){
-        for (int i = 0; i < items.size(); i++) {
-            if(items.get(i).getName().equalsIgnoreCase(name) && items.get(i).getDate().equalsIgnoreCase(date) &&
-                    items.get(i).getStatus().equalsIgnoreCase(status)){
+            if(items.get(i).getType().equalsIgnoreCase(type) && items.get(i).getName().equalsIgnoreCase(name)){
                 System.out.println(items.get(i));
+                done = true;
             }
         }
+        if(!done) {
+            System.out.println("There is no item within this type and name.");
+        }
     }
-
 
     public void searchByProducer(String producer){
-
         Collections.sort(items);
         for (int i = 0; i < items.size(); i++) {
             Item it = items.get(i);

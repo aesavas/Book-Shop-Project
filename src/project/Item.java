@@ -66,7 +66,7 @@ public abstract class Item implements Comparable<Item> {
     @Override
     public String toString(){
         return "============"+"\n"+ "ID : "+this.id+"\nName : "+this.name+"\nDate : "+this.publishDate+
-                "\nType : "+this.type+"\n";
+                "\nType : "+this.type;
     }
 
 
