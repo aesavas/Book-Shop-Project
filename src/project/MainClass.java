@@ -14,6 +14,7 @@ public class MainClass {
         Catalog catalog = new Catalog();
         int choice;
         do{
+            System.out.println("0 - Quit");
             System.out.println("1 - Add Item");
             System.out.println("2 - Delete Item");
             System.out.println("3 - Update Item");
@@ -25,6 +26,9 @@ public class MainClass {
 
 
             switch (choice) {
+                case 0:
+                    System.out.println("Quiting..");
+                    break;
                 case 1://Adding
                     System.out.println("1 - Add Book");
                     System.out.println("2 - Add Magazine");
@@ -141,19 +145,19 @@ public class MainClass {
                     choice = scan.nextInt();
                     switch (choice) {
                         case 1:
-                            System.out.println("Enter name for searching : "); scan.nextLine();
+                            System.out.print("Enter name for searching : "); scan.nextLine();
                             name = scan.nextLine();
                             catalog.searchWithName(name);
                             break;
                         case 2:
-                            System.out.println("Enter name of type : "); scan.nextLine();
+                            System.out.print("Enter name of type : "); scan.nextLine();
                             String type = scan.nextLine();
-                            System.out.println("Enter name of item : ");
+                            System.out.print("Enter name of item : ");
                             name = scan.nextLine();
                             catalog.searchWithTypeAndName(type, name);
                             break;
                         case 3:
-                            System.out.println("Enter producer name : "); scan.nextLine();
+                            System.out.print("Enter producer name : "); scan.nextLine();
                             String producer = scan.nextLine();
                             catalog.searchByProducer(producer);
                             break;
@@ -167,11 +171,11 @@ public class MainClass {
                     System.out.println("1 - Print all items in alphabetical order");
                     System.out.println("2 - Choose type then print all item in that type");
                     System.out.println("3 - Choose order type");
-                    System.out.println("Enter choice : ");
+                    System.out.print("Enter choice : ");
                     choice = scan.nextInt();
                     switch (choice) {
                         case 1:
-                            catalog.printingAllItems();
+                            catalog.printingAllItems(1);
                             break;
                         case 2:
                             System.out.println("Enter type to print all items within that type : ");
@@ -182,14 +186,14 @@ public class MainClass {
                         case 3:
                             System.out.println("1 - Ascending Sort");
                             System.out.println("2 - Descending Sort");
-                            System.out.println("Enter choice : ");
+                            System.out.print("Enter choice : ");
                             choice = scan.nextInt();
                             switch (choice) {
                                 case 1:
-                                    catalog.printAscending();
+                                    catalog.printingAllItems(1);
                                     break;
                                 case 2:
-                                    catalog.printDescending();
+                                    catalog.printingAllItems(2);
                                     break;
                                 default:
                                     break;
@@ -204,7 +208,7 @@ public class MainClass {
             }
 
 
-        }while(choice != -1);
+        }while(choice != 0);
     }
 
 }

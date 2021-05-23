@@ -199,15 +199,17 @@ public class Catalog {
         }
     }
 
-    public void printingAllItems(){
+    public void printingAllItems(int choice){
         Collections.sort(items);
-        for (int i = 0; i < items.size(); i++) {
-            System.out.println(items.get(i));
+        if(choice == 1){
+            printAscending();
+        }
+        else{
+            printDescending();
         }
     }
 
     public void printingAllItemsInOneType(String type){
-        Collections.sort(items);
         for (int i = 0; i < items.size(); i++) {
             if(items.get(i).getType().equalsIgnoreCase(type)){
                 System.out.println(items.get(i));
@@ -216,15 +218,13 @@ public class Catalog {
     }
 
     public void printAscending(){
-        Collections.sort(items);
         for(Item i:items){
             System.out.println(i);
         }
     }
 
     public void printDescending(){
-        Collections.reverse(items);
-        for (int i = 0; i < items.size(); i++) {
+        for (int i = items.size()-1; i >= 0; i--) {
             System.out.println(items.get(i));
         }
     }
