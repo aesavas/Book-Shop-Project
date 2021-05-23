@@ -12,9 +12,9 @@ put the improvements I want to make here in a checklist.
 
 ### To Do List
 
-- [ ] I will edit the names of variables and functions for readability.
-- [ ] I will add comment lines that explain the purpose of the functions.
-- [ ] I will remove unnecessary variables and functions.
+- [x] I will edit the names of variables and functions for readability.
+- [x] I will add comment lines that explain the purpose of the functions.
+- [x] I will remove unnecessary variables and functions.
 - [ ] I will catch errors that could cause the program to crash and take precautions.
 - [ ] When the program is terminated, I will establish a database or text file link to store the entered information.
 
